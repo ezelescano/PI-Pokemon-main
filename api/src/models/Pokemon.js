@@ -17,11 +17,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.STRING,
+    hp: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    hp: {
+    attack:{
       type: DataTypes.INTEGER,
       allowNull: false,
     },
