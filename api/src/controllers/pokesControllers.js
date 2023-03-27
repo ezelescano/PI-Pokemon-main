@@ -51,6 +51,7 @@ const getPokeByName = async (name) => {
     const toLowerName = name.toLowerCase();
     const allPokes = await getAllPokes();
     const result = allPokes.filter((pokemon) => pokemon.name === toLowerName);
+    return result;
 }
 
 

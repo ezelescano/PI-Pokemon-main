@@ -10,13 +10,13 @@ const getAllPokesHandler = async (req, res) => {
             res.status(400).json({error: "That name was not found"})
         } 
     }else {
+
         try {
         const result = await getAllPokes();
   res.status(200).json(result)
     } catch (error) {
      res.status(400).json({error: "No response from the server"})   
     }
-
     }
 }
 
