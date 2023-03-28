@@ -80,13 +80,9 @@ const getPokeById = async (id, source) => {
 
 /***************************POKEMON CREATE******************************************************* */
 
-const pokeCreate = () => {
-
-
-    return ('Hola soy la ruta del Poke Create')
-
-
-
+const pokeCreate = async (name, image, hp, attack, defense, speed, height, weight) => {
+    const newPokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight })
+    return newPokemon;
 }
 
 module.exports = {

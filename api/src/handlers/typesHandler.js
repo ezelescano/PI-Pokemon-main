@@ -1,7 +1,7 @@
-const getTypePoke = require('../controllers/typesController');
+const getTypePoke= require('../controllers/typesController');
 
-const getTypeHandler = (req, res) => {
-    const result = getTypePoke();
+const getTypeHandler = async (req, res) => {
+    const result = await getTypePoke();
     res.send(result);
 }
 
