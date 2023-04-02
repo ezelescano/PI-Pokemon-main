@@ -1,6 +1,9 @@
-import { GET_ALL_POKEMON } from "./action-types";
+import { GET_ALL_POKEMON, GET_BY_ID } from "./action-types";
 
-const initialState = {pokemons: []};
+const initialState = {
+    pokemons: [],
+    detail: []
+};
 
 
 
@@ -11,6 +14,11 @@ switch(action.type) {
             ...state,
             pokemons: action.payload
         }
+    
+        case GET_BY_ID:
+            return {
+                detail: action.payload
+            }
     default: 
     return {
         ...state

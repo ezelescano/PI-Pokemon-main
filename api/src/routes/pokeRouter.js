@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {getAllPokesHandler, getPokeByIdHandler, pokeCreateHandler, getPokeByNameHandler} = require('../handlers/pokeHandlers')
+const {getAllPokesHandler, getPokeByIdHandler, pokeCreateHandler} = require('../handlers/pokeHandlers')
 
 const pokeRouter = Router();
 

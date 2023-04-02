@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const PokeCard = (props) => {
@@ -5,7 +6,9 @@ const PokeCard = (props) => {
 
         <div>
             <img src={props.image} alt={props.name} />
-            <p>Name: {props.name}</p>
+            <Link to={`/detail/${props.id}`}>
+                <p>Name: {props.name}</p>
+            </Link>
             <p>Type: {props.type}</p>
         </div>
 
