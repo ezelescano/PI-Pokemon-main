@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from "react-redux";
 import { getAllPokemon } from "../Redux/actions";
 import { useEffect } from "react";
 import PokeCard from "../PokeCard/PokeCard";
-
+import style from "../PokeConteiner/PokeConteiner.module.css"
 
 
 const PokeConteiner = () => {
@@ -17,7 +17,7 @@ const PokeConteiner = () => {
 
         <>
         <h1>Pokemons:</h1>
-        <div>
+        <div className={style.divConteiner}>
         {pokemons?.map((pokes)=> {
             return(
 
