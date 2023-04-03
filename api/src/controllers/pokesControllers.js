@@ -51,6 +51,9 @@ const getPokeByName = async (name) => {
     const toLowerName = name.toLowerCase();
     const allPokes = await getAllPokes();
     const result = allPokes.filter((pokemon) => pokemon.name === toLowerName);
+    if(result.length === 0) {
+        return "The Pokémon Does Not Exist";
+    }
     return result;
 }
 

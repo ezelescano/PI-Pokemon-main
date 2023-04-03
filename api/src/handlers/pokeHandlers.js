@@ -7,7 +7,7 @@ const getAllPokesHandler = async (req, res) => {
             const onePoke = await getPokeByName(name);
             res.status(200).json(onePoke);
         } catch (error) {
-            res.status(400).json({ error: "That name was not found" })
+            res.status(400).json({ error: "No response from the server" })
         }
     } else {
 

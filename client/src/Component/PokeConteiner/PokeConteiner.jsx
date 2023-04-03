@@ -5,20 +5,27 @@ import PokeCard from "../PokeCard/PokeCard";
 import style from "../PokeConteiner/PokeConteiner.module.css"
 
 
+
 const PokeConteiner = () => {
+    const {getName, pokemons} = useSelector((state) => state)
     
     const dispatch = useDispatch();
-    const pokemons = useSelector((state) => state.pokemons)
     useEffect(() => {
         dispatch(getAllPokemon())
     }, [dispatch]);
+
+    let result;
+
+    getName.length !== 0 
+    ? result = getName 
+    : result = pokemons
     
     return(
 
         <>
         <h1>Pokemons:</h1>
         <div className={style.divConteiner}>
-        {pokemons?.map((pokes)=> {
+        {result?.map((pokes)=> {
             return(
 
              <PokeCard 
