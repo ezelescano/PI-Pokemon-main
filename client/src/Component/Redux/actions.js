@@ -1,4 +1,4 @@
-import { FILTER_ALPHABE, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { FILTER_ALPHABE, FILTER_MAX, FILTER_MIN, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
 import axios from "axios";
 
 export const getAllPokemon = () => {
@@ -38,5 +38,17 @@ export const getByName =  (name) => {
 export const orderAlphabe = (option) => {
     return {
         type: FILTER_ALPHABE, payload: option
+    }
+}
+export const filterMax= (max) => {
+    console.log('/////////////soy el maxim',max);
+    return{
+        type: FILTER_MAX, payload: max
+    }
+}
+
+export const filterMin = (min) => {
+    return {
+        type: FILTER_MIN, payload: min
     }
 }

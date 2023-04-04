@@ -16,12 +16,14 @@ const PokeConteiner = () => {
 
     let result;
 
-    getName.length !== 0 
-    ? result = getName 
-    : result = pokemons
-    orderAlpha.length !==0 
-    ? result = orderAlpha
-    : result = result
+    // if(getName.length !== 0 ){
+    //     result = getName
+    // }else if(orderAlpha?.length !== 0 ){
+    //     result = orderAlpha
+    // }
+    getName.length !== 0
+    ?result = getName
+    :result = orderAlpha
     
     return(
 

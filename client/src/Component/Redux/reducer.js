@@ -1,9 +1,9 @@
-import { FILTER_ALPHABE, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { FILTER_ALPHABE, FILTER_MAX, FILTER_MIN, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
 
 const initialState = {
     pokemons: [],
     detail: [],
-    getName: [], 
+    getName: [],
     orderAlpha: []
 };
 
@@ -17,6 +17,7 @@ const rootReducer = (state = initialState, action) => {
                 detail: [],
                 getName: [],
                 pokemons: action.payload,
+                orderAlpha: action.payload
             }
 
         case GET_BY_ID:
@@ -30,11 +31,21 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 getName: action.payload
             }
-            case FILTER_ALPHABE:
-                return {
-                    ...state,
-                    orderAlpha: action.payload
-                }
+        case FILTER_ALPHABE:
+            return {
+                ...state,
+                orderAlpha: action.payload
+            }
+        case FILTER_MAX:
+            return {
+                ...state,
+                pokemons: state.pokemons.sort((a, b) => b.attack - a.attack)
+            }
+        case FILTER_MIN:
+            return {
+                ...state,
+                pokemons: state.pokemons.sort((a, b) => a.attack - b.attack)
+            }
         default:
             return {
                 ...state
