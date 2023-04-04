@@ -3,7 +3,6 @@ import { useState } from "react";
 import { getByName } from "../Redux/actions";
 
 const Search = () => {
-const getName = useSelector((state) => state.getName)
 const [byName, setByName] = useState("");
 
 

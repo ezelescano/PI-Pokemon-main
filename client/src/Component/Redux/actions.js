@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { FILTER_ALPHABE, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
 import axios from "axios";
 
 export const getAllPokemon = () => {
@@ -35,8 +35,8 @@ export const getByName =  (name) => {
     }
 }
 
-export const orderAsDes = (option) => {
-    return async (dispatch) => {
-        
+export const orderAlphabe = (option) => {
+    return {
+        type: FILTER_ALPHABE, payload: option
     }
 }
