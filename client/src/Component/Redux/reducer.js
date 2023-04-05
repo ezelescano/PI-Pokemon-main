@@ -1,10 +1,12 @@
-import { FILTER_ALPHABE, FILTER_MAX, FILTER_MIN, GET_ALL_POKEMON, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
 
 const initialState = {
     pokemons: [],
     detail: [],
     getName: [],
-    orderAlpha: []
+    orderAlpha: [],
+    allTypes: [],
+    filterTypes:[]
 };
 
 
@@ -18,6 +20,7 @@ const rootReducer = (state = initialState, action) => {
                 getName: [],
                 pokemons: action.payload,
                 orderAlpha: action.payload
+
             }
 
         case GET_BY_ID:
@@ -46,6 +49,27 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 pokemons: state.pokemons.sort((a, b) => a.attack - b.attack)
             }
+        case GET_ALL_TYPES:
+            return {
+                ...state,
+                allTypes: action.payload
+            }
+            case FILTER_FOR_TYPE:
+                return {
+                    ...state,
+                    orderAlpha: [...state.pokemons].filter((poke) => {
+                        let aux = false;
+                        poke.types?.forEach((type) => {
+                            if(type.name === action.payload){
+                                aux = true;
+                            }
+                        }
+                        )
+                        return aux;
+                        // console.log("/////");
+                    })
+                    
+                }
         default:
             return {
                 ...state
@@ -54,3 +78,8 @@ const rootReducer = (state = initialState, action) => {
 }
 
 export default rootReducer;
+
+
+// .map((poke) => {
+//     const arrayNamesTypes = poke.types.map((type) => type.name);
+//     return arrayNamesTypes.filter((types) => types === action.payload)
