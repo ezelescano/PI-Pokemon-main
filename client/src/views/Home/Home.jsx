@@ -1,5 +1,6 @@
 
 import FilterAlphabe from "../../Component/Fiters/FilterAlphabe";
+import FilterDBApi from "../../Component/Fiters/FilterDBApi";
 import FilterMaxMin from "../../Component/Fiters/FilterMaxMIn";
 import FilterType from "../../Component/Fiters/FilterType";
 import PokeConteiner from "../../Component/PokeConteiner/PokeConteiner";
@@ -12,6 +13,7 @@ const Home = () => {
     return(
         <>
         <Search/>
+        <FilterDBApi/>
         <FilterType/>
         <FilterMaxMin/>
         <FilterAlphabe/>

@@ -19,9 +19,10 @@ const getAllApiPokes = async () => {
                 speed: subReqApi.stats[5].base_stat,
                 height: subReqApi.height,
                 weigth: subReqApi.weight,
-                types: subReqApi.types.map((type) => {
+                type: subReqApi.types.map((type) => {
                     return { name: type.type.name };
                 }),
+                created: false,  
 
             };
             return pokeRequest;

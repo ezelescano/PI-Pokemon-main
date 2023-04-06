@@ -1,4 +1,4 @@
-import { FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
 
 const initialState = {
     pokemons: [],
@@ -6,7 +6,7 @@ const initialState = {
     getName: [],
     orderAlpha: [],
     allTypes: [],
-    filterTypes:[]
+    filterTypes: []
 };
 
 
@@ -54,22 +54,32 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 allTypes: action.payload
             }
-            case FILTER_FOR_TYPE:
-                return {
-                    ...state,
-                    orderAlpha: [...state.pokemons].filter((poke) => {
-                        let aux = false;
-                        poke.types?.forEach((type) => {
-                            if(type.name === action.payload){
-                                aux = true;
-                            }
+        case FILTER_FOR_TYPE:
+            return {
+                ...state,
+                orderAlpha: [...state.pokemons].filter((poke) => {
+                    let aux = false;
+                    poke.types?.forEach((type) => {
+                        if (type.name === action.payload) {
+                            aux = true;
                         }
-                        )
-                        return aux;
-                        // console.log("/////");
-                    })
-                    
-                }
+                    }
+                    )
+                    return aux;
+                    // console.log("/////");
+                })
+
+            }
+        case FILTER_POKE_DB:
+            return {
+                ...state,
+                pokemons: state.pokemons.filter((poke) => isNaN(poke.id))
+            }
+        case FILTER_POKE_API:
+            return {
+                ...state,
+                pokemons: state.pokemons.filter((poke) => typeof poke.id === 'number')
+            }
         default:
             return {
                 ...state
