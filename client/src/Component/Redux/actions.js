@@ -69,6 +69,8 @@ export const filterForType = (pokeType) => {
     }
 }
 
+
+
 export  const filterPokeDB = (db) => {
     return {
         type: FILTER_POKE_DB, payload: db

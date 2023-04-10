@@ -9,7 +9,7 @@ const PokeCard = (props) => {
             <Link to={`/detail/${props.id}`}>
                 <p>Name: {props.name}</p>
             </Link>
-            <p>Type: {props.type}</p>
+            <p>Type: </p><ul>{props.type}</ul>
         </div>
 
 

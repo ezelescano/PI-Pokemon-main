@@ -19,10 +19,10 @@ const getAllApiPokes = async () => {
                 speed: subReqApi.stats[5].base_stat,
                 height: subReqApi.height,
                 weigth: subReqApi.weight,
-                type: subReqApi.types.map((type) => {
+                types: subReqApi.types.map((type) => {
                     return { name: type.type.name };
                 }),
-                created: false,  
+                created: false,
 
             };
             return pokeRequest;
@@ -32,7 +32,7 @@ const getAllApiPokes = async () => {
 }
 
 const getAllPokes = async () => {
-    const pokeDataBase = await Pokemon.findAll({
+    const pokeDataBase = await Pokemon?.findAll({
         includes: {
             model: Type,
             through: {
@@ -52,7 +52,7 @@ const getPokeByName = async (name) => {
     const toLowerName = name.toLowerCase();
     const allPokes = await getAllPokes();
     const result = allPokes.filter((pokemon) => pokemon.name === toLowerName);
-    if(result.length === 0) {
+    if (result.length === 0) {
         return "The Pokémon Does Not Exist";
     }
     return result;
@@ -84,11 +84,62 @@ const getPokeById = async (id, source) => {
 
 /***************************POKEMON CREATE******************************************************* */
 
-const pokeCreate = async (name, image, hp, attack, defense, speed, height, weight) => {
-    const newPokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight })
-    return newPokemon;
+const pokeCreate = async (name, image, hp, attack, defense, speed, height, weight, type1, type2) => {
+     name = name.toLowerCase();
+    let pokes = {
+        name,
+        image,
+        hp,
+        attack,
+        defense,
+        speed,
+        height,
+        weight,
+    };
+    try {
+        let createdPokemon = await Pokemon.create(pokes);
+        const addType1 = await createdPokemon.addType(type1, {
+            through: "pokemontypes",
+        });
+        let addType2 = await createdPokemon.addType(type2, {
+            through: "pokemontypes",
+        });
+        return resizeBy.status(200).send("The pokemon has been created successfully");
+    } catch (error) {
+        return error;
+    }
+    // const newPokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight, type1, type2 })
+    // return newPokemon;
 }
 
+//       
+//    
+// const  pokeCreate = async (req, res) => {
+//     const { hp, attack, defense, speed, height, weight, image, type1, type2 } = req.body;
+//     let name = req.body.name.toLowerCase();
+//     let pokemon = {
+//       name,
+//       hp,
+//       attack,
+//       defense,
+//       speed,
+//       height,
+//       weight,
+//       image,
+//     };
+//     try {
+//       let createdPokemon = await Pokemon.create(pokemon);
+// const addType1 = await createdPokemon.addType(type1, {
+    //         through: "pokemontypes",
+    //       });
+    //       const addType2 = await createdPokemon.addType(type2, {
+    //         through: "pokemontypes",
+    //       });
+//     //       return res.status(200).send("El pokemon ha sido creado correctamente");
+// } catch (error) {
+//     //       return error;
+//     //     }
+//     //   }
 module.exports = {
     getAllPokes,
     getPokeById,

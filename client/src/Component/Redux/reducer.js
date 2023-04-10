@@ -71,14 +71,30 @@ const rootReducer = (state = initialState, action) => {
 
             }
         case FILTER_POKE_DB:
+            state.pokemons =  [...state.orderAlpha]
+            // console.log("/////poke de db". state.pokemons);
             return {
                 ...state,
-                pokemons: state.pokemons.filter((poke) => isNaN(poke.id))
+                pokemons: state.pokemons?.filter((poke) =>{
+                    let aux = false
+                    if( typeof poke.id !== 'number'){
+                        aux = true
+                    }
+                    return aux
+                } )
             }
         case FILTER_POKE_API:
+            state.pokemons =  [...state.orderAlpha]
+            // console.log("/////poke de api". state.pokemons);
             return {
                 ...state,
-                pokemons: state.pokemons.filter((poke) => typeof poke.id === 'number')
+                pokemons: state.pokemons?.filter((poke) =>{
+                    let aux = false
+                    if( typeof poke.id === 'number'){
+                        aux = true
+                    }
+                    return aux
+                } )
             }
         default:
             return {

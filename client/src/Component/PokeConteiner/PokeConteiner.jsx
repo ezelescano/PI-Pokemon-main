@@ -37,7 +37,7 @@ const PokeConteiner = () => {
             image= {pokes.image}
             name={pokes.name}
             id= {pokes.id}
-            type={pokes.types.map((type) => {
+            type={pokes.types?.map((type) => {
                 return(<ul>{type.name}</ul>) 
             })}/>
             )
