@@ -64,11 +64,12 @@ const getPokeByName = async (name) => {
 const getPokeById = async (id, source) => {
     if (source === 'Base de Datos') {
         const idDBase = await Pokemon.findByPk(id, {
-            includes: {
+            include: [{
                 model: Type,
                 attributes: ["name"],
-            },
+            }]
         });
+        console.log("//////", idDBase.dataValues);
         return idDBase;
     } else {
         const apiPokes = await getAllApiPokes();

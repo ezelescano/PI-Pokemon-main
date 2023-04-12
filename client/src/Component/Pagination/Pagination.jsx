@@ -6,15 +6,23 @@ import PokeCard from "../PokeCard/PokeCard";
 
 const Pagination = () => {
 
- const {paginationPage, pokemons} = useSelector(state => state);
+ const {paginationPage, pokemons, getName} = useSelector(state => state);
 
  const lastIndex = paginationPage * 12;
  const firstIndex = lastIndex - 12;
  const currentPokemon = pokemons.slice(firstIndex, lastIndex);
+
+
+let result
+
+getName.length 
+? result = getName
+: result = currentPokemon
+
     return(
         <>
         {
-            currentPokemon?.map((pokes)=> {
+            result?.map((pokes)=> {
                 return(
                 
                  <PokeCard 

@@ -10,10 +10,10 @@ const Detail = () => {
     const detail = useSelector((state) => state.detail);
     let { id } = useParams()
 
-    
-        useEffect(() => {
+
+    useEffect(() => {
         dispatch(getById(id))
-        
+
     }, [dispatch]);
     return (
         <div>
@@ -25,9 +25,11 @@ const Detail = () => {
             <p>Defense: {detail?.defense}</p>
             <p>Speed: {detail?.speed}</p>
             <p>Height: {detail?.height} </p>
-            <p>Weigth: {detail?.weigth}</p>
-            <p>Type: </p> {detail.types &&
-              detail.types.map((type) => <ul> {type.name}</ul>)} 
+            <p>Weigth: {detail?.weigth?detail.weigth : detail.weight}</p>
+            <p>Type: </p>
+            <ul> {detail?.types &&
+                detail.types?.map((type) => <li key={type.id}> {type.name}</li>)}
+            </ul>
         </div>
     )
 }

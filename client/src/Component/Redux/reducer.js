@@ -1,4 +1,4 @@
-import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME, CHANGE_PAGE, FILTERS } from "./action-types";
+import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME, CHANGE_PAGE, FILTERS, RESET } from "./action-types";
 
 const initialState = {
     pokemons: [],
@@ -25,6 +25,13 @@ const rootReducer = (state = initialState, action) => {
                 orderAlpha: action.payload
 
             }
+            case RESET:
+                return{
+                    ...state,
+                    getName: action.payload,
+                    paginationPage: 1, 
+                    pokemons: state.allPokemons
+                }
         case CHANGE_PAGE:
             return {
                 ...state,
@@ -32,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
             }
         case GET_BY_ID:
             return {
+                ...state,
                 pokemons: [],
                 getName: [],
                 paginationPage: 1,
@@ -70,6 +78,3 @@ const rootReducer = (state = initialState, action) => {
 export default rootReducer;
 
 
-// .map((poke) => {
-//     const arrayNamesTypes = poke.types.map((type) => type.name);
-//     return arrayNamesTypes.filter((types) => types === action.payload)

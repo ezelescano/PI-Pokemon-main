@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filters, getAllTypes } from "../Redux/actions";
-
+import { filters, getAllTypes, reset } from "../Redux/actions";
 
 
 
@@ -34,9 +33,9 @@ const Filters = () => {
             if (filterType !== "") currentPokemons = currentPokemons.filter(poke => poke.types.find(type => type.name === filterType))
             if (filterMAxMin === "Max to Min") currentPokemons = currentPokemons.sort((a, b) => b.attack - a.attack)
             if (filterMAxMin === "Min to Max") currentPokemons = currentPokemons.sort((a, b) => a.attack - b.attack)
-            if(orderAlpha === "A to Z") currentPokemons = currentPokemons.sort((a, b) => a.name.localeCompare(b.name));
-            if(orderAlpha === "Z to A") currentPokemons = currentPokemons.sort((a, b) => b.name.localeCompare(a.name));
-       
+            if (orderAlpha === "A to Z") currentPokemons = currentPokemons.sort((a, b) => a.name.localeCompare(b.name));
+            if (orderAlpha === "Z to A") currentPokemons = currentPokemons.sort((a, b) => b.name.localeCompare(a.name));
+
             dispatch(filters(currentPokemons))
         }
 
@@ -48,7 +47,7 @@ const Filters = () => {
 
             <div>
                 <label>Choose your option:</label>
-                <select onChange={(event) => setOrderAlpha(event.target.value)} >
+                <select value={orderAlpha} onChange={(event) => (setOrderAlpha(event.target.value), setFilterMaxMin(""))} >
                     <option value=""></option>
                     <option value="A to Z">A to Z</option>
                     <option value="Z to A">Z to A</option>
@@ -57,7 +56,7 @@ const Filters = () => {
 
             <div>
                 <label>Data Base or Api</label>
-                <select onChange={(event) => setFilterDBApi(event.target.value)}>
+                <select value={FilterDBApi} onChange={(event) => setFilterDBApi(event.target.value)}>
                     <option value="">Take your option</option>
                     <option value="Data Base">Data Base</option>
                     <option value="API">API</option>
@@ -66,7 +65,7 @@ const Filters = () => {
 
             <div>
                 <label>Sort by max and min attack</label>
-                <select onChange={(event) => setFilterMaxMin(event.target.value)}>
+                <select value={filterMAxMin} onChange={(event) => (setFilterMaxMin(event.target.value), setOrderAlpha(""))}>
                     <option value="" ></option>
                     <option value="Max to Min">Max to Min</option>
                     <option value="Min to Max">Min to Max</option>
@@ -75,7 +74,7 @@ const Filters = () => {
 
             <div>
                 <label>choose at Type:</label>
-                <select onChange={(event) => setFilterType(event.target.value)}>
+                <select value={filterType} onChange={(event) => setFilterType(event.target.value)}>
                     <option value=""></option>
                     {allTypes?.map((type) => {
                         return (
@@ -85,6 +84,10 @@ const Filters = () => {
                 </select>
             </div>
 
+            <div>
+                <button type="button" onClick={()=> (dispatch(reset()), setOrderAlpha(""), setFilterDBApi(""),setFilterMaxMin(""),setFilterType("")
+ )}>Reset Filters</button>
+            </div>
         </>
     )
 }

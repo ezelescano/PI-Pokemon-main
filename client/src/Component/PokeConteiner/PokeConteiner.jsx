@@ -1,14 +1,13 @@
 import {useSelector, useDispatch} from "react-redux";
 import { changePage, getAllPokemon } from "../Redux/actions";
 import { useEffect } from "react";
-import PokeCard from "../PokeCard/PokeCard";
 import style from "../PokeConteiner/PokeConteiner.module.css"
 import Pagination from "../Pagination/Pagination";
 
 
 
 const PokeConteiner = () => {
-    const {getName, orderAlpha, pokemons, paginationPage } = useSelector((state) => state)
+    const {pokemons, getName} = useSelector((state) => state)
     
     const dispatch = useDispatch();
     useEffect(() => {
@@ -16,18 +15,14 @@ const PokeConteiner = () => {
     }, [dispatch]);
     let result;
 
-    // if(getName.length !== 0 ){
-    //     result = getName
-    // }else if(orderAlpha?.length !== 0 ){
-    //     result = orderAlpha
-    // }
 
     const pokePerPage = 12;
-    const totalPage = Math.ceil(pokemons.length / pokePerPage);
+
+    let totalPage
+    getName.length
+    ? totalPage = 1 
+    : totalPage = Math.ceil(pokemons.length / pokePerPage);
     
-     getName.length !== 0
-    ?result = getName
-    :result = orderAlpha
     
     return(
 

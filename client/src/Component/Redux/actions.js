@@ -1,4 +1,4 @@
-import { FILTERS, CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME, CHANGE_PAGE } from "./action-types";
+import { FILTERS, CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, RESET, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME, CHANGE_PAGE } from "./action-types";
 import axios from "axios";
 
 export const getAllPokemon = () => {
@@ -70,5 +70,11 @@ export const changePage = (num) => {
 export const filters = (dataPokemon) => {
     return async (dispatch) => {
         dispatch({type:FILTERS, payload: dataPokemon})
+    }
+}
+
+export const reset = () => {
+    return async (dispatch) => {
+        dispatch({type:RESET, payload: []})
     }
 }
