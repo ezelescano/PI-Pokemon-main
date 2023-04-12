@@ -7,7 +7,7 @@ import style from "../PokeConteiner/PokeConteiner.module.css"
 
 
 const PokeConteiner = () => {
-    const {getName, orderAlpha,  } = useSelector((state) => state)
+    const {getName, orderAlpha, pokemons } = useSelector((state) => state)
     
     const dispatch = useDispatch();
     useEffect(() => {

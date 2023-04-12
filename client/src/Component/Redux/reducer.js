@@ -1,4 +1,4 @@
-import { FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
 
 const initialState = {
     pokemons: [],
@@ -6,7 +6,8 @@ const initialState = {
     getName: [],
     orderAlpha: [],
     allTypes: [],
-    filterTypes: []
+    filterTypes: [],
+    createPokemon: []
 };
 
 
@@ -71,30 +72,35 @@ const rootReducer = (state = initialState, action) => {
 
             }
         case FILTER_POKE_DB:
-            state.pokemons =  [...state.orderAlpha]
+            state.pokemons = [...state.orderAlpha]
             // console.log("/////poke de db". state.pokemons);
             return {
                 ...state,
-                pokemons: state.pokemons?.filter((poke) =>{
+                pokemons: state.pokemons?.filter((poke) => {
                     let aux = false
-                    if( typeof poke.id !== 'number'){
+                    if (typeof poke.id !== 'number') {
                         aux = true
                     }
                     return aux
-                } )
+                })
             }
         case FILTER_POKE_API:
-            state.pokemons =  [...state.orderAlpha]
+            state.pokemons = [...state.orderAlpha]
             // console.log("/////poke de api". state.pokemons);
             return {
                 ...state,
-                pokemons: state.pokemons?.filter((poke) =>{
+                pokemons: state.pokemons?.filter((poke) => {
                     let aux = false
-                    if( typeof poke.id === 'number'){
+                    if (typeof poke.id === 'number') {
                         aux = true
                     }
                     return aux
-                } )
+                })
+            }
+        case CREATE_POKEMON:
+            return {
+                ...state,
+                createPokemon: action.payload
             }
         default:
             return {

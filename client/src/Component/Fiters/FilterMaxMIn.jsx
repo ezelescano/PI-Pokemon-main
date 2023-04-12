@@ -13,7 +13,7 @@ const handleChange = (event) => {
         <div>
         <label>Sort by max and min attack</label>
         <select onChange={handleChange}>
-            <option></option>
+            <option value="" ></option>
             <option value="Max to Min">Max to Min</option>
             <option value="Min to Max">Min to Max</option>
         </select>

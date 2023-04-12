@@ -33,9 +33,9 @@ const getPokeByIdHandler = async (req, res) => {
 
 
 const pokeCreateHandler = async (req, res) => {
-    const { name, image, hp, attack, defense, speed, height, weight } = req.body;
+    const { name, image, hp, attack, defense, speed, height, weight, type1, type2 } = req.body;
     try {
-        const result = await pokeCreate(name, image, hp, attack, defense, speed, height, weight);
+        const result = await pokeCreate(name, image, hp, attack, defense, speed, height, weight, type1, type2);
         res.send(result);
     } catch (error) {
         res.status(400).json({ error: error.message })

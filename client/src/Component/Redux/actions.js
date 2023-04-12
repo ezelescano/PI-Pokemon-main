@@ -1,4 +1,4 @@
-import { FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
 import axios from "axios";
 
 export const getAllPokemon = () => {
@@ -81,4 +81,18 @@ export const filterPokeApi = (api) => {
     return {
         type: FILTER_POKE_API, payload: api
     }
+}
+
+export const createPokemon = (input) => {
+    console.log("/////soy el input del action", input);
+    return async (dispatch) =>{
+        try {
+           dispatch({type: CREATE_POKEMON, payload: true })
+           await axios.post("http://localhost:3001/pokemons", input) 
+           
+        } catch (error) {
+            console.log(error);
+            dispatch({type: CREATE_POKEMON, payload: false })
+        }
+    };
 }
