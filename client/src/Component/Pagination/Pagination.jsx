@@ -8,8 +8,9 @@ const Pagination = () => {
 
  const {paginationPage, pokemons, getName} = useSelector(state => state);
 
- const lastIndex = paginationPage * 12;
- const firstIndex = lastIndex - 12;
+ const lastIndex = paginationPage * 12; // numero de pagina por 12
+ const firstIndex = lastIndex - 12; 
+ //firtsindex seriala posicion inicial
  const currentPokemon = pokemons.slice(firstIndex, lastIndex);
 
 

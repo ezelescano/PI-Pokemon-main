@@ -16,12 +16,12 @@ const PokeConteiner = () => {
     let result;
 
 
-    const pokePerPage = 12;
+    const pokePerPage = 12;//indica cuantos pokes voy a tener por pagina
 
     let totalPage
     getName.length
     ? totalPage = 1 
-    : totalPage = Math.ceil(pokemons.length / pokePerPage);
+    : totalPage = Math.ceil(pokemons.length / pokePerPage);// se hace la division de la cantidad de pokes en total, dandonos el numero de paginas 
     
     
     return(
