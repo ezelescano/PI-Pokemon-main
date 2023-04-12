@@ -9,3 +9,5 @@ export const FILTER_FOR_TYPE = "FILTER_FOR_TYPE";
 export const FILTER_POKE_DB = "FILTER_POKE_DB"; 
 export const FILTER_POKE_API = "FILTER_POKE_API";
 export const CREATE_POKEMON = "CREATE_POKEMON";
+export const CHANGE_PAGE = "CHANGE_PAGE";
+export const FILTERS = "FILTERS";

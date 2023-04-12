@@ -1,13 +1,13 @@
-import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME } from "./action-types";
+import { CREATE_POKEMON, FILTER_ALPHABE, FILTER_FOR_TYPE, FILTER_MAX, FILTER_MIN, FILTER_POKE_API, FILTER_POKE_DB, GET_ALL_POKEMON, GET_ALL_TYPES, GET_BY_ID, GET_BY_NAME, CHANGE_PAGE, FILTERS } from "./action-types";
 
 const initialState = {
     pokemons: [],
     detail: [],
     getName: [],
-    orderAlpha: [],
     allTypes: [],
-    filterTypes: [],
-    createPokemon: []
+    createPokemon: [],
+    paginationPage: 1,
+    allPokemons: []
 };
 
 
@@ -17,90 +17,48 @@ const rootReducer = (state = initialState, action) => {
         case GET_ALL_POKEMON:
             return {
                 ...state,
+                allPokemons: action.payload,
                 detail: [],
                 getName: [],
+                paginationPage: 1,
                 pokemons: action.payload,
                 orderAlpha: action.payload
 
             }
-
+        case CHANGE_PAGE:
+            return {
+                ...state,
+                paginationPage: action.payload
+            }
         case GET_BY_ID:
             return {
                 pokemons: [],
                 getName: [],
+                paginationPage: 1,
                 detail: action.payload
             }
         case GET_BY_NAME:
             return {
                 ...state,
+                paginationPage: 1,
                 getName: action.payload
-            }
-        case FILTER_ALPHABE:
-            return {
-                ...state,
-                orderAlpha: action.payload
-            }
-        case FILTER_MAX:
-            return {
-                ...state,
-                pokemons: state.pokemons.sort((a, b) => b.attack - a.attack)
-            }
-        case FILTER_MIN:
-            return {
-                ...state,
-                pokemons: state.pokemons.sort((a, b) => a.attack - b.attack)
             }
         case GET_ALL_TYPES:
             return {
                 ...state,
                 allTypes: action.payload
             }
-        case FILTER_FOR_TYPE:
-            return {
-                ...state,
-                orderAlpha: [...state.pokemons].filter((poke) => {
-                    let aux = false;
-                    poke.types?.forEach((type) => {
-                        if (type.name === action.payload) {
-                            aux = true;
-                        }
-                    }
-                    )
-                    return aux;
-                    // console.log("/////");
-                })
 
-            }
-        case FILTER_POKE_DB:
-            state.pokemons = [...state.orderAlpha]
-            // console.log("/////poke de db". state.pokemons);
-            return {
-                ...state,
-                pokemons: state.pokemons?.filter((poke) => {
-                    let aux = false
-                    if (typeof poke.id !== 'number') {
-                        aux = true
-                    }
-                    return aux
-                })
-            }
-        case FILTER_POKE_API:
-            state.pokemons = [...state.orderAlpha]
-            // console.log("/////poke de api". state.pokemons);
-            return {
-                ...state,
-                pokemons: state.pokemons?.filter((poke) => {
-                    let aux = false
-                    if (typeof poke.id === 'number') {
-                        aux = true
-                    }
-                    return aux
-                })
-            }
         case CREATE_POKEMON:
             return {
                 ...state,
                 createPokemon: action.payload
+            }
+        case FILTERS:
+            return {
+                ...state,
+                paginationPage: 1,
+                pokemons: action.payload
             }
         default:
             return {

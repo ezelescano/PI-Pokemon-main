@@ -1,13 +1,14 @@
 import {useSelector, useDispatch} from "react-redux";
-import { getAllPokemon } from "../Redux/actions";
+import { changePage, getAllPokemon } from "../Redux/actions";
 import { useEffect } from "react";
 import PokeCard from "../PokeCard/PokeCard";
 import style from "../PokeConteiner/PokeConteiner.module.css"
+import Pagination from "../Pagination/Pagination";
 
 
 
 const PokeConteiner = () => {
-    const {getName, orderAlpha, pokemons } = useSelector((state) => state)
+    const {getName, orderAlpha, pokemons, paginationPage } = useSelector((state) => state)
     
     const dispatch = useDispatch();
     useEffect(() => {
@@ -20,30 +21,31 @@ const PokeConteiner = () => {
     // }else if(orderAlpha?.length !== 0 ){
     //     result = orderAlpha
     // }
-    getName.length !== 0
+
+    const pokePerPage = 12;
+    const totalPage = Math.ceil(pokemons.length / pokePerPage);
+    
+     getName.length !== 0
     ?result = getName
     :result = orderAlpha
     
     return(
 
+
+
         <>
         <h1>Pokemons:</h1>
-        <div className={style.divConteiner}>
-        {result?.map((pokes)=> {
-            return(
-
-             <PokeCard 
-            key= {pokes.id}
-            image= {pokes.image}
-            name={pokes.name}
-            id= {pokes.id}
-            type={pokes.types?.map((type) => {
-                return(<ul>{type.name}</ul>) 
-            })}/>
-            )
-
-        })}
         
+        {
+            [...Array(totalPage).keys()].map(num => {
+                return(
+                    <button value={num + 1} onClick={(event) => dispatch(changePage(event.target.value))}>{num + 1}</button>
+                )
+            })
+        }
+        
+        <div className={style.divConteiner}>
+       <Pagination/>        
            </div> 
         </>
     )
