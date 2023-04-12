@@ -9,7 +9,6 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
       {location.pathname !== "/" && <NavBar />}
       <Route exact path='/' component={Landing} />
       <Route path='/home' component={Home} />

@@ -1,3 +1,19 @@
+.buttonContainer {
+    background: darkblue;
+    color: beige;
+    font-size: 16px;
+    padding: 1rem;
+    border: solid 1px darkblue;
+    margin: 0.5rem;
+}
+
+.buttonContainer:hover {
+    background: transparent;
+    color: darkblue;
+    transition: all 0.3s;
+}
+
+
 .divConteiner{
     border: 1px solid black;
     display: flex;
@@ -6,3 +22,5 @@
     flex-wrap: wrap;
     gap: 1em;
 }
+
+

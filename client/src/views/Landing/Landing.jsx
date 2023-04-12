@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import landing from '../../assets/landing.jpg'
-
+import style from '../Landing/Landing.module.css'
 
 
 const Landing = () => {
     return (
         <Link to='/home'>
-            <img src={landing} />
-            <button>HOME</button>
+            <div className={style.landing}>
+            <button className={style.shadow__btn}>Home</button>
+            </div>
         </Link>
-    )
+    ) 
 }
 
 

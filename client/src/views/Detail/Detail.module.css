@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.detailConteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerCards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textDetail {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    margin-left: 5rem;
+    font-size: 24px;
+}
+
+.textDetail p {
+    margin: 0.5rem 0;
+}
+
+ul {
+    list-style: none;
+}

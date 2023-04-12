@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filters, getAllTypes, reset } from "../Redux/actions";
-
+import style from "../Fiters/Filters.module.css"
 
 
 
@@ -13,7 +13,7 @@ const Filters = () => {
     const [FilterDBApi, setFilterDBApi] = useState("");
     const [filterMAxMin, setFilterMaxMin] = useState("");
     const [filterType, setFilterType] = useState("");
-
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Filters = () => {
     }
 
     return (
-        <>
+        <div className={style.filterContainer}>
 
 
             <div>
@@ -85,10 +85,10 @@ const Filters = () => {
             </div>
 
             <div>
-                <button type="button" onClick={()=> (dispatch(reset()), setOrderAlpha(""), setFilterDBApi(""),setFilterMaxMin(""),setFilterType("")
+                <button className={style.buttonFilter} type="button" onClick={()=> (dispatch(reset()), setOrderAlpha(""), setFilterDBApi(""),setFilterMaxMin(""),setFilterType("")
  )}>Reset Filters</button>
             </div>
-        </>
+        </div>
     )
 }
 

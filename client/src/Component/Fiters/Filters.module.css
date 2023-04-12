@@ -1,13 +1,23 @@
-.navbar{
+.filterContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid black;
-    min-height: 100px;
     background-color: darkblue;
+    min-height: 120px;
 }
 
-.navbar .btnNavBar {
+.filterContainer label{
+    color: beige;
+    margin-right: 0.5rem;
+}
+
+.filterContainer select {
+    background: beige;
+    padding: 1rem 3rem;
+    color: darkblue;
+}
+
+.buttonFilter {
     padding: 1rem 3rem;
     background-color: beige;
     border: solid 1px beige;
@@ -16,7 +26,7 @@
     border-radius: 10px;
 }
 
-.navbar .btnNavBar:hover {
+.buttonFilter:hover {
     background-color: transparent;
     color: beige;
 }

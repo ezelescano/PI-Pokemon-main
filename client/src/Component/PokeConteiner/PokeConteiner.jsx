@@ -28,13 +28,13 @@ const PokeConteiner = () => {
 
 
 
-        <>
+        <div className={style.pagiContainer}>
         <h1>Pokemons:</h1>
         
         {
             [...Array(totalPage).keys()].map(num => {
                 return(
-                    <button value={num + 1} onClick={(event) => dispatch(changePage(event.target.value))}>{num + 1}</button>
+                    <button className={style.buttonContainer} value={num + 1} onClick={(event) => dispatch(changePage(event.target.value))}>{num + 1}</button>
                 )
             })
         }
@@ -42,7 +42,7 @@ const PokeConteiner = () => {
         <div className={style.divConteiner}>
        <Pagination/>        
            </div> 
-        </>
+        </div>
     )
 }
 

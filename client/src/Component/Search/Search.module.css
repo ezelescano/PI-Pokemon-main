@@ -1,0 +1,34 @@
+.searchContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    min-height: 100px;
+    background-color: beige;
+}
+
+.searchButton {
+    padding: 1rem 3rem;
+    background-color: darkblue;
+    border: solid 1px darkblue;
+    color: beige;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+
+.searchButton:hover {
+    background-color: transparent;
+    color: darkblue;
+}
+
+.searchContainer input {
+    padding: 1rem 3rem;
+    margin: 0.5rem;  
+    border-radius: 10px;
+}
+
+label {
+    color: beige;
+    font-size: 20px;
+    color: darkblue;
+}

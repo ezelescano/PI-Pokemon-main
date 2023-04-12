@@ -7,8 +7,8 @@ const NavBar = () => {
     return (
        <nav className={style.navbar}>
 
-        {location.pathname !== "/home" && <Link to='/home'><button>Go To Home!</button></Link>}
-        {location.pathname !== "/form" && <Link to='/form'><button>Go to create your Pokémon!</button></Link>}
+        {location.pathname !== "/home" && <Link to='/home'><button className={style.btnNavBar}>Go To Home!</button></Link>}
+        {location.pathname !== "/form" && <Link to='/form'><button className={style.btnNavBar}>Go to create your Pokémon!</button></Link>}
        </nav>
     )
 }
