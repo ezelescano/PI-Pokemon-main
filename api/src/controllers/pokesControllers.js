@@ -85,31 +85,7 @@ const getPokeById = async (id, source) => {
 
 /***************************POKEMON CREATE******************************************************* */
 
-// const pokeCreate = async (name, image, hp, attack, defense, speed, height, weight, type1, type2) => {
-//      name = name.toLowerCase();
-//     let pokes = {
-//         name,
-//         image,
-//         hp,
-//         attack,
-//         defense,
-//         speed,
-//         height,
-//         weight,
-//     };
-//     try {
-//         let createdPokemon = await Pokemon.create(pokes);
-//         const addType1 = await createdPokemon.addType(type1, {
-//             through: {model: pokemontypes},
-//         });
-//         let addType2 = await createdPokemon.addType(type2, {
-//             through: {model: pokemontypes},
-//         });
-//         return res.status(200).send("The pokemon has been created successfully");
-//     } catch (error) {
-//         return error;
-//     }
-// }
+
 const pokeCreate = async (name, image, hp, attack, defense, speed, height, weight, type1, type2) => {
     console.log("/////soy el input del controller", name, image, hp, attack, defense, speed, height, weight, type1, type2 );
     name = name.toLowerCase();

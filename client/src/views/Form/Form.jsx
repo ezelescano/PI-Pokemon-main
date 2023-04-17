@@ -41,21 +41,26 @@ const Form = () => {
     }
 
     const pokeCreated = (event) => {
+
         event.preventDefault()
-        dispatch(createPokemon(input));
-        setInput({
-            name: '',
-            image: '',
-            hp: 0,
-            attack: 0,
-            defense: 0,
-            speed: 0,
-            height: 0,
-            weight: 0,
-            type1: '',
-            type2: ''
-        });
-        alert("Pokemon Created")
+        if (!input.name) {
+            alert("error")
+        } else {
+            dispatch(createPokemon(input));
+            setInput({
+                name: '',
+                image: '',
+                hp: 0,
+                attack: 0,
+                defense: 0,
+                speed: 0,
+                height: 0,
+                weight: 0,
+                type1: '',
+                type2: ''
+            });
+            alert("Pokemon Created")
+        }
     }
 
     return (

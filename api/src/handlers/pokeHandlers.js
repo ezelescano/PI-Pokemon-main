@@ -21,7 +21,8 @@ const getAllPokesHandler = async (req, res) => {
 }
 
 const getPokeByIdHandler = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.param;
+
     try {
         const source = isNaN(id) ? 'Base de Datos' : 'Api';
         const result = await getPokeById(id, source);
